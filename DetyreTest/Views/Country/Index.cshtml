@@ -1,0 +1,52 @@
+﻿@model List<Country>
+@{
+    ViewData["Title"] = "Country";
+}
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-left">
+                    Countries
+                </div>
+                <div class="col-lg-6 text-right">
+                    <a class="btn btn-primary text-white" asp-controller="Country" asp-action="AddOrUpdate" asp-route-id="0">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Dialling Code</th>
+                    <th>Population</th>
+                    <th>Currency</th>
+                    <th>Language</th>
+                    <th>Continent</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.DiallingCode</td>
+                        <td>@item.Population</td>
+                        <td>@item.Currency</td>
+                        <td>@item.OfficialLanguage</td>
+                        <td>@item.Continent</td>
+                        <td>@item.InsertedDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <a class="btn btn-link p-0" asp-controller="Country" asp-action="AddOrUpdate" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-link p-0" asp-controller="Country" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
