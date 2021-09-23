@@ -25,7 +25,7 @@ namespace DetyreTest.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-R11LEBR\\SQLEXPRESS;Initial Catalog=DetyreTest;Connection Timeout=200;User ID=DesktopUser;Password=dionkuka123");
+                optionsBuilder.UseSqlServer("Data Source=SQL5108.site4now.net;Initial Catalog=db_a7a301_detyretest;Connection Timeout=200;User ID=db_a7a301_detyretest_admin;Password=P@ssw0rd");
             }
         }
 
@@ -43,7 +43,7 @@ namespace DetyreTest.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(150);
+                    .HasMaxLength(100);
 
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.Cities)

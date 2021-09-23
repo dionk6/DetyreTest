@@ -14,11 +14,12 @@ namespace DetyreTest.Models
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public int DiallingCode { get; set; }
         public int Population { get; set; }
+        public int DiallingCode { get; set; }
         public string Currency { get; set; }
         public string OfficialLanguage { get; set; }
         public string Continent { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime InsertedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
 

@@ -18,7 +18,7 @@ namespace DetyreTest.Controllers
         }
         public IActionResult Index()
         {
-            var model = _countryRepository.GetAll().ToList();
+            var model = _countryRepository.GetAll().Where(t => t.IsDeleted == false).ToList();
             return View(model);
         }
 
@@ -43,6 +43,7 @@ namespace DetyreTest.Controllers
             if (model.Id == 0)
             {
                 model.InsertedDate = DateTime.Now;
+                model.IsDeleted = false;
                 _countryRepository.Add(model);
                 await _countryRepository.SaveChanges();
 
@@ -55,6 +56,14 @@ namespace DetyreTest.Controllers
 
                 return RedirectToAction("Index");
             }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var model = await _countryRepository.GetById(id);
+            model.IsDeleted = true;
+            await _countryRepository.Update(model);
+            return RedirectToAction("Index"); ;
         }
     }
 }
